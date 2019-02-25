@@ -1,4 +1,4 @@
-# Basic Use of Flow**
+# Basic Use of Flow
 
 ## Introduction
 Flow is a static type checker for your javascript code using static type annotations
@@ -9,6 +9,7 @@ Flow is a static type checker for your javascript code using static type annotat
   Babel-cli
 
 **Setup Compiler**
+
 Babel is a compiler for JavaScript code that has support for Flow. Babel will take your Flow code and strip out any type annotations.
 
 1. First install babel-cli and babel-preset-flow with either Yarn 
@@ -23,6 +24,7 @@ Babel is a compiler for JavaScript code that has support for Flow. Babel will ta
 	> Presets are collections of pluginsused to support particular language features.
 
 **Compile the code using babel**
+
 If your all source of code is in `src` directory and you wish to compile them into another directore `build`
 > yarn run babel src/ -d build/
 Or you can add this to your `package.json` script

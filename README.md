@@ -1,12 +1,12 @@
-#Basic Use of Flow**
+# Basic Use of Flow**
 
-##Introduction
+## Introduction
 Flow is a static type checker for your javascript code using static type annotations
 
-*Package Manager*
-Yarn
-*Compiler*
-Babel-cli
+* *Package Manager*
+   Yarn
+* *Compiler*
+  Babel-cli
 
 **Setup Compiler**
 Babel is a compiler for JavaScript code that has support for Flow. Babel will take your Flow code and strip out any type annotations.
@@ -52,11 +52,11 @@ This creates an empty file `.flowconfig`, tells the Flow background process the 
 2. Run `flow` or `flow status`. This strats the background process which monitors all Flow files.
 3. Write the flow code
 	```
-		// @flow
-		function foo(x: ?number): string {
-			if (x) {
-				return x;
-			}
-			return "Default string";
+	// @flow
+	function foo(x: ?number): string {
+		if (x) {
+			return x;
 		}
+		return "Default string";
+	}
 	```

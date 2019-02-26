@@ -1,4 +1,4 @@
-# Basic Use of Flow**
+# Basic Use of Flow
 
 ## Introduction
 Flow is a static type checker for javascript code using static type annotations.
@@ -25,7 +25,8 @@ Babel is a compiler for JavaScript code that has support for Flow. Babel will ta
 
 If your all source of code is in `src` directory and you wish to compile them into another directore `build`
 > yarn run babel src/ -d build/
-Or you can add this to your `package.json` script
+
+Or you can add this to your `package.json` script.
 	```
 	{
 	  "name": "flow-basic",
@@ -43,6 +44,7 @@ Or you can add this to your `package.json` script
 > yarn add --dev flow-bin
 2. Init the flow
 > yarn run flow init
+
 This creates an empty file `.flowconfig`, tells the Flow background process the root of where to begin checking Flow code for errors.
 3. Run FLow
 > yarn run flow

@@ -3,8 +3,8 @@
 ## Introduction
 Flow is a static type checker for javascript code using static type annotations.
 
-* *Package Manager - `Yarn`
-* *Compiler* - `Babel-cli`
+* **Package Manager** - `Yarn`
+* **Compiler** - `Babel-cli`
 
 ## Setup Compiler
 
@@ -26,7 +26,8 @@ Babel is a compiler for JavaScript code that has support for Flow. Babel will ta
 If your all source of code is in `src` directory and you wish to compile them into another directore `build`
 > yarn run babel src/ -d build/
 
-Or you can add this to your `package.json` script.
+Or you can add this to your `package.json` script
+
 	```
 	{
 	  "name": "flow-basic",
@@ -41,11 +42,12 @@ Or you can add this to your `package.json` script.
 ## Setup Flow
 
 1. Add a devDependency on the flow-bin
-> yarn add --dev flow-bin
+	> yarn add --dev flow-bin
 2. Init the flow
-> yarn run flow init
+	> yarn run flow init
 
-This creates an empty file `.flowconfig`, tells the Flow background process the root of where to begin checking Flow code for errors.
+	This creates an empty file `.flowconfig`, tells the Flow background process the root of where to begin checking Flow code for errors.
+
 3. Run FLow
 > yarn run flow
 
@@ -62,3 +64,59 @@ This creates an empty file `.flowconfig`, tells the Flow background process the 
 		return "Default string";
 	}
 	```
+
+## How to configure Flow
+You can configure Flow by modifying `.flowconfig`.
+
+The `.flowconfig` consists of 7 sections.
+
+### [declarations]
+
+The [declarations] section in a .flowconfig file tells Flow to parse files matching the specified regular expressions in declaration mode.Declaration mode should only be used for existing third-party code. You should never use this for code under your control.
+
+```
+[declarations]
+.*/third_party/.*. # Any file or directory under a directory named third_party
+<PROJECT_ROOT>/third_party/.* # any file or directory under the directory named third_party/ within the project root
+```
+
+### [include]
+This section tells Flow to include the specified files or directories.
+
+```
+[include]
+../externalFile.js
+```
+
+### [ignore]
+This section tells Flow to ignore files matching the specified regular expressions when type checking your code. By default, nothing is ignored.
+
+```
+[ignore]
+.*/__test__/.*. # Any file or directory under a directory named __tests__
+<PROJECT_ROOT>/__tests__/.* # ignore any file or directory under the directory named __tests__/ within the project root. 
+```
+
+### [untyped]
+tells Flow to not typecheck files matching the specified regular expressions and instead throw away types and treat modules as any. This is different from the [ignore] config section that causes matching files to be ignored by the module resolver, which inherently makes them un-typechecked, and also unresolvable by import or require. When ignored [libs] must then be specified for each import using flow-typed, which may not always be desired.
+
+It is also different from the [declarations] section. This also does not typecheck the file contents, but [declarations] does extract and use the signatures of functions, classes, etc, when checking other code.
+
+[untyped] instead causes a file to be ignored by the typechecker as if it had noflow in it, resolve modules as any typ, but allow them to NOT be ignored by the module resolver. Any matching file is skipped by Flow (not even parsed, like other noflow files!), but can still be require()‘d.
+
+### [libs]
+The [libs] section in a .flowconfig file tells Flow to include the specified library definitions when type checking your code.
+
+### [lints]
+can contain several key-value pairs of the form:
+
+```
+[lints]
+ruleA=severityA
+```
+
+### [version]
+You can specify in the .flowconfig which version of Flow you expect to use
+
+
+
